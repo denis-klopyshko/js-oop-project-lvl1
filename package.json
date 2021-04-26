@@ -4,15 +4,12 @@
   "description": "[![Actions Status](https://github.com/denis-klopyshko/js-oop-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/denis-klopyshko/js-oop-project-lvl1/actions)",
   "main": "./index.js",
   "type": "module",
-  "bin": {
-    "hexlet": "bin/nodejs-package.js"
-  },
   "engines": {
     "node": ">=14"
   },
   "scripts": {
     "test": "npx jest --bail",
-    "lint": "npx eslint"
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",
@@ -31,8 +28,7 @@
   "homepage": "https://github.com/denis-klopyshko/js-oop-project-lvl1#readme",
   "dependencies": {
     "debug": "^4.3.1",
-    "lodash": "^4.17.21",
-    "yup": "^0.32.9"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@jest/globals": "^26.6.2",
