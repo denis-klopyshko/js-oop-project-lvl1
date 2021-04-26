@@ -1,6 +1,5 @@
-import _ from "lodash";
-import StringSchema from "./string.js";
-import NumberSchema from "./number.js";
+import StringSchema from './string.js';
+import NumberSchema from './number.js';
 
 export default class Validator {
   constructor() {
@@ -11,12 +10,10 @@ export default class Validator {
   }
 
   string() {
-    const schemaName = this.schemas["str"];
-    return new schemaName();
+    return new this.schemas.str();
   }
 
   number() {
-    const schemaName = this.schemas["num"];
-    return new schemaName();
+    return new this.schemas.num();
   }
 }

@@ -1,6 +1,6 @@
-import Validator from "../src/validator";
+import Validator from '../src/validator';
 
-describe("number", function () {
+describe('number', () => {
   let validator;
   let schema;
 
@@ -9,7 +9,7 @@ describe("number", function () {
     schema = validator.number();
   });
 
-  it("positive", () => {
+  it('positive', () => {
     schema.positive();
 
     expect(schema.isValid(1)).toBeTruthy();
@@ -19,26 +19,26 @@ describe("number", function () {
     expect(schema.isValid(-Infinity)).toBeFalsy();
   });
 
-  it("required", () => {
+  it('required', () => {
     schema.required();
 
     expect(schema.isValid(1)).toBeTruthy();
     expect(schema.isValid(-1)).toBeTruthy();
     expect(schema.isValid(0)).toBeTruthy();
     expect(schema.isValid()).toBeFalsy();
-    expect(schema.isValid("1")).toBeFalsy();
+    expect(schema.isValid('1')).toBeFalsy();
 
     expect(schema.isValid(Infinity)).toBeFalsy();
     expect(schema.isValid(-Infinity)).toBeFalsy();
     expect(schema.isValid(NaN)).toBeFalsy();
   });
 
-  it("range", () => {
+  it('range', () => {
     expect(schema.range(1, 5).isValid(4)).toBeTruthy();
     expect(schema.range(3, 8).isValid(2)).toBeFalsy();
   });
 
-  it("e2e", () => {
+  it('e2e', () => {
     schema.required().positive();
 
     expect(schema.range(1, 5).isValid(4)).toBeTruthy();
