@@ -2,19 +2,37 @@ import _ from "lodash";
 import BaseSchema from "./schema.js";
 
 export default class NumberSchema extends BaseSchema {
+  constructor() {
+    super();
+    this.validators = {
+      required: (val) => _.isFinite(val),
+      positive: (val) => val > 0,
+      range: (val, start, end) => _.inRange(val, start, end),
+    };
+    this.checks = [];
+  }
+
   required() {
-    this.tests.required = (val) => _.isFinite(val);
+    this.checks.push({
+      validate: this.validators["required"],
+      args: [],
+    });
     return this;
   }
 
   positive() {
-    this.tests.positive = (val) => val > 0;
+    this.checks.push({
+      validate: this.validators["positive"],
+      args: [],
+    });
     return this;
   }
 
   range(start, end) {
-    const range = _.range(start, end);
-    this.tests.range = (val) => _.includes(range, val);
+    this.checks.push({
+      validate: this.validators["range"],
+      args: [start, end],
+    });
     return this;
   }
 }

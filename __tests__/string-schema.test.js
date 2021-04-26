@@ -22,7 +22,7 @@ describe("string", function () {
     expect(schema.isValid("hexlet")).toBeTruthy();
     expect(schema.isValid(null)).toBeFalsy();
     expect(schema.isValid()).toBeFalsy();
-    expect(schema.isValid("")).toBeTruthy();
+    expect(schema.isValid("")).toBeFalsy();
   });
 
   it("contains", () => {

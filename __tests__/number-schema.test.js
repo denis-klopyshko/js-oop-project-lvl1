@@ -1,6 +1,6 @@
 import Validator from "../src/validator";
 
-describe("string", function () {
+describe("number", function () {
   let validator;
   let schema;
 

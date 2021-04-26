@@ -4,19 +4,19 @@ import NumberSchema from "./number.js";
 
 export default class Validator {
   constructor() {
-    this.validators = {
+    this.schemas = {
       str: StringSchema,
       num: NumberSchema,
     };
   }
 
   string() {
-    const schemaName = this.validators["str"];
+    const schemaName = this.schemas["str"];
     return new schemaName();
   }
 
   number() {
-    const schemaName = this.validators["num"];
+    const schemaName = this.schemas["num"];
     return new schemaName();
   }
 }

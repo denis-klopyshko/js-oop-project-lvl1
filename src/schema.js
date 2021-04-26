@@ -1,9 +1,8 @@
 export default class BaseSchema {
-  constructor() {
-    this.tests = {};
-  }
-
   isValid(value) {
-    return Object.keys(this.tests).every((key) => this.tests[key](value));
+    return this.checks.reduce(
+      (acc, { validate, args }) => validate(value, ...args),
+      false
+    );
   }
 }
