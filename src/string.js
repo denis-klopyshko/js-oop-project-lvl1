@@ -4,17 +4,12 @@ import BaseSchema from './schema.js';
 export default class StringSchema extends BaseSchema {
   constructor() {
     super();
-    this.validators = {
-      required: (val) => typeof val === 'string' && val.length > 0,
-      minLength: (val, len) => val.length >= len,
-      contains: (val, substr) => _.includes(val, substr),
-    };
     this.checks = [];
   }
 
   required() {
     this.checks.push({
-      validate: this.validators.required,
+      validate: this.constructor.validators.required,
       args: [],
     });
     return this;
@@ -22,7 +17,7 @@ export default class StringSchema extends BaseSchema {
 
   minLength(len) {
     this.checks.push({
-      validate: this.validators.minLength,
+      validate: this.constructor.validators.minLength,
       args: [len],
     });
     return this;
@@ -30,9 +25,15 @@ export default class StringSchema extends BaseSchema {
 
   contains(substr) {
     this.checks.push({
-      validate: this.validators.contains,
+      validate: this.constructor.validators.contains,
       args: [substr],
     });
     return this;
   }
 }
+
+StringSchema.validators = {
+  required: (val) => typeof val === 'string' && val.length > 0,
+  minLength: (val, len) => val.length >= len,
+  contains: (val, substr) => _.includes(val, substr),
+};

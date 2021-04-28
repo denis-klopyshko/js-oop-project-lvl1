@@ -5,4 +5,12 @@ export default class BaseSchema {
       false
     );
   }
+
+  test(validatorName, value) {
+    this.checks.push({
+      validate: this.constructor.validators[validatorName],
+      args: [value],
+    });
+    return this;
+  }
 }

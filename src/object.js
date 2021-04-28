@@ -3,21 +3,22 @@ import BaseSchema from './schema.js';
 export default class ObjectSchema extends BaseSchema {
   constructor() {
     super();
-    this.validators = {
-      shape: (val, ...shapeObj) =>
-        shapeObj.every(([key, schema]) => schema.isValid(val[key])),
-    };
-
     this.checks = [];
   }
 
   shape(shapeObj) {
     const objectData = Object.entries(shapeObj);
     this.checks.push({
-      validate: this.validators.shape,
+      validate: this.constructor.validators.shape,
       args: [...objectData],
     });
 
     return this;
   }
 }
+
+ObjectSchema.validators = {
+  shape: (val, ...shapeObj) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    shapeObj.every(([key, schema]) => schema.isValid(val[key])),
+};

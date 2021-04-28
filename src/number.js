@@ -4,17 +4,12 @@ import BaseSchema from './schema.js';
 export default class NumberSchema extends BaseSchema {
   constructor() {
     super();
-    this.validators = {
-      required: (val) => _.isFinite(val),
-      positive: (val) => val > 0,
-      range: (val, start, end) => _.inRange(val, start, end),
-    };
     this.checks = [];
   }
 
   required() {
     this.checks.push({
-      validate: this.validators.required,
+      validate: this.constructor.validators.required,
       args: [],
     });
     return this;
@@ -22,7 +17,7 @@ export default class NumberSchema extends BaseSchema {
 
   positive() {
     this.checks.push({
-      validate: this.validators.positive,
+      validate: this.constructor.validators.positive,
       args: [],
     });
     return this;
@@ -30,9 +25,15 @@ export default class NumberSchema extends BaseSchema {
 
   range(start, end) {
     this.checks.push({
-      validate: this.validators.range,
+      validate: this.constructor.validators.range,
       args: [start, end],
     });
     return this;
   }
 }
+
+NumberSchema.validators = {
+  required: (val) => _.isFinite(val),
+  positive: (val) => val > 0,
+  range: (val, start, end) => _.inRange(val, start, end),
+};
