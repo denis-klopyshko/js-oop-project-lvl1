@@ -19,7 +19,6 @@
   "license": "ISC",
   "jest": {
     "testEnvironment": "node",
-    "transform": {},
     "testRunner": "jest-circus/runner"
   },
   "bugs": {
