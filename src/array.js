@@ -1,11 +1,6 @@
 import BaseSchema from './schema.js';
 
 export default class ArraySchema extends BaseSchema {
-  constructor() {
-    super();
-    this.checks = [];
-  }
-
   required() {
     this.checks.push({
       validate: this.constructor.validators.required,

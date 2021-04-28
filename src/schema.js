@@ -1,9 +1,10 @@
 export default class BaseSchema {
+  constructor() {
+    this.checks = [];
+  }
+
   isValid(value) {
-    return this.checks.reduce(
-      (acc, { validate, args }) => validate(value, ...args),
-      false
-    );
+    return this.checks.every(({ validate, args }) => validate(value, ...args));
   }
 
   test(validatorName, value) {

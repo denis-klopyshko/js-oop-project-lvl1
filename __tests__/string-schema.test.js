@@ -13,7 +13,6 @@ describe('string', () => {
     expect(schema.minLength(3).isValid('te')).toBeFalsy();
     expect(schema.minLength(4).isValid('test')).toBeTruthy();
     expect(schema.minLength(5).isValid('test')).toBeFalsy();
-    expect(schema.minLength(0).isValid('')).toBeTruthy();
   });
 
   it('required', () => {

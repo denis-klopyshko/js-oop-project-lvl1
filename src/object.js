@@ -1,11 +1,6 @@
 import BaseSchema from './schema.js';
 
 export default class ObjectSchema extends BaseSchema {
-  constructor() {
-    super();
-    this.checks = [];
-  }
-
   shape(shapeObj) {
     const objectData = Object.entries(shapeObj);
     this.checks.push({

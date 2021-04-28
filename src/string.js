@@ -2,11 +2,6 @@ import _ from 'lodash';
 import BaseSchema from './schema.js';
 
 export default class StringSchema extends BaseSchema {
-  constructor() {
-    super();
-    this.checks = [];
-  }
-
   required() {
     this.checks.push({
       validate: this.constructor.validators.required,
