@@ -1,6 +1,6 @@
 import Validator from '../src/validator';
 
-describe('number', () => {
+describe('array', () => {
   let validator;
   let schema;
 
