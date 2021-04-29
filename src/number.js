@@ -3,6 +3,7 @@ import BaseSchema from './schema.js';
 
 export default class NumberSchema extends BaseSchema {
   required() {
+    this.requiredValue = true;
     this.checks.push({
       validate: this.constructor.validators.required,
       args: [],
@@ -29,6 +30,6 @@ export default class NumberSchema extends BaseSchema {
 
 NumberSchema.validators = {
   required: (val) => _.isFinite(val),
-  positive: (val) => val > 0,
+  positive: (val) => parseFloat(val) > 0,
   range: (val, start, end) => _.inRange(val, start, end),
 };

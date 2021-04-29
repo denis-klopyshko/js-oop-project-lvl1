@@ -1,9 +1,16 @@
+import _ from 'lodash';
+
 export default class BaseSchema {
   constructor() {
     this.checks = [];
+    this.requiredValue = false;
   }
 
   isValid(value) {
+    if (!this.requiredValue && _.isNil(value)) {
+      return true;
+    }
+
     return this.checks.every(({ validate, args }) => validate(value, ...args));
   }
 

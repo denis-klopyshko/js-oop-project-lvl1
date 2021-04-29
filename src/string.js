@@ -3,6 +3,7 @@ import BaseSchema from './schema.js';
 
 export default class StringSchema extends BaseSchema {
   required() {
+    this.requiredValue = true;
     this.checks.push({
       validate: this.constructor.validators.required,
       args: [],
