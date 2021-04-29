@@ -14,19 +14,23 @@ export default class Validator {
   }
 
   string() {
-    return new this.schemas.string();
+    const SchemaName = this.schemas.string;
+    return new SchemaName();
   }
 
   number() {
-    return new this.schemas.number();
+    const SchemaName = this.schemas.number;
+    return new SchemaName();
   }
 
   array() {
-    return new this.schemas.array();
+    const SchemaName = this.schemas.array;
+    return new SchemaName();
   }
 
   object() {
-    return new this.schemas.object();
+    const SchemaName = this.schemas.array;
+    return new SchemaName();
   }
 
   addValidator(type, name, fn) {
